@@ -1,0 +1,60 @@
+units:
+  cx: 18
+  cy: 17  #mirror: &mirror
+  #  ref: thumbs_mod3_cluster
+  #  distance: 1.5kx          
+  kx: cx + 1
+  ky: cy + 1
+  px: kx + 1
+  py: ky + 1
+points:
+  zones:
+    matrix:
+      key:
+        padding: cy
+      columns:
+        pinky:
+          key:
+            splay: 9
+            spread: px
+        ring:
+          key:
+            splay: -1
+            stagger: 4
+            spread: kx
+        middle:
+          key:
+            splay: -4
+            stagger: 2
+            spread: px
+        index:
+          key:
+            splay: -4
+            stagger: -4
+            spread: px
+        inner:
+          key:
+            spread: cx
+            stagger: -0.2ky
+      rows:
+        bottom:
+        home:
+        top:
+    thumbs:
+      anchor:
+        ref: matrix_inner_bottom
+        shift: [16, -ky]
+      columns:
+        mod1:
+          key:
+            splay: -15
+        mod2:
+          key:
+            spread: kx
+            stagger: -1.5
+            splay: -5
+      rows:
+        cluster:
+  mirror: &mirror
+    ref: thumbs_mod2_cluster
+    distance: 1.5kx     
