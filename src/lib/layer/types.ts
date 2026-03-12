@@ -14,6 +14,7 @@ export interface Combo {
   name: string;
   description: string;
   keyPositions: number[];
+  activatesLayer?: string;   // populated when bindings is &sl LAYER
 }
 
 export interface Layer {

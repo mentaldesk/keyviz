@@ -7,12 +7,14 @@
 
 	let heldKeyName = $state<string | null>(null);
 	let hoveredComboKeys = $state<Set<string> | null>(null);
+	let heldComboLayer = $state<string | null>(null);
 
-	// Determine which layer the held key activates (must be an &lt binding in the base layer)
+	// Determine which layer to display — combo &sl takes precedence, then held &lt key
 	const activeLayerKey = $derived(
-		heldKeyName && data.allLayers.BASE?.bindings[heldKeyName]?.holdType === 'layer'
+		heldComboLayer ??
+		(heldKeyName && data.allLayers.BASE?.bindings[heldKeyName]?.holdType === 'layer'
 			? data.allLayers.BASE.bindings[heldKeyName].hold!
-			: 'BASE'
+			: 'BASE')
 	);
 
 	const activeEntry = $derived(data.allLayers[activeLayerKey] ?? data.allLayers.BASE);
@@ -26,6 +28,7 @@
 	$effect(() => {
 		const release = () => {
 			heldKeyName = null;
+			heldComboLayer = null;
 		};
 		window.addEventListener('mouseup', release);
 		return () => window.removeEventListener('mouseup', release);
@@ -67,6 +70,7 @@
 						class="snap-start shrink-0 w-52 rounded-xl bg-gray-900 border border-gray-800 hover:border-gray-600 px-3 pt-2 pb-3 transition-colors cursor-default"
 						onmouseenter={() => { hoveredComboKeys = new Set(keyNames); }}
 						onmouseleave={() => { hoveredComboKeys = null; }}
+						onmousedown={() => { if (combo.activatesLayer) heldComboLayer = combo.activatesLayer; }}
 					>
 						<p class="text-xs font-medium text-gray-400 text-center mb-2">{combo.description}</p>
 						<ComboPreview keys={data.keys} highlightedKeyNames={keyNames} />

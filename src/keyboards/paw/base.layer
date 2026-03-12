@@ -29,3 +29,35 @@ combos:
         description: "Symbol (One-Shot)"
         key-positions: 15 16
         bindings: &sl SYM
+    osm_lshift:
+        description: "Left Shift (One-Shot)"
+        key-positions: 2 3
+        bindings: &skq LSHFT
+    osm_rshift:
+        description: "Right Shift (One-Shot)"
+        key-positions: 6 7
+        bindings: &skq RSHFT
+    apostrophe:
+        description: "Apostrophe"
+        key-positions: 7 8
+        bindings: &kp SQT
+    bslash:
+        description: "Backslash"
+        key-positions: 23 24
+        bindings: &kp BSLH
+    slash:
+        description: "Slash"
+        key-positions: 25 26
+        bindings: &kp SLASH
+    capsword:
+        description: "Caps Word"
+        key-positions: 1 2 3
+        bindings: &caps_word
+    capslock:
+        description: "Caps Lock"
+        key-positions: 6 7 8
+        bindings: &kp CAPS
+    mirror:
+        description: "Mirror"
+        key-positions: 13 23
+        bindings: &sl MIRROR
