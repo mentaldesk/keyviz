@@ -119,6 +119,34 @@ src/
     [keyboard]/       ← one prerendered page per keyboard
 ```
 
+## Hosting on Vercel
+
+Since this site is fully static (`@sveltejs/adapter-static`), deploying to Vercel requires no special configuration.
+
+### Option A — Vercel CLI
+
+```bash
+pnpm build
+npx vercel deploy --prebuilt build/
+```
+
+### Option B — Git integration (recommended)
+
+1. Push your repo to GitHub (or GitLab / Bitbucket).
+2. Go to [vercel.com/new](https://vercel.com/new) and import the repository.
+3. Vercel will auto-detect SvelteKit. Override the build settings if needed:
+
+   | Setting | Value |
+   |---|---|
+   | Framework Preset | SvelteKit |
+   | Build Command | `pnpm build` |
+   | Output Directory | `build` |
+   | Install Command | `pnpm install` |
+
+4. Click **Deploy**. Every push to the default branch redeploys automatically.
+
+> **Note:** the `build/` directory is the static output — this is what Vercel serves. The `Output Directory` must be set to `build` (not the SvelteKit default of `.svelte-kit/output`).
+
 ## Tech stack
 
 - [SvelteKit 2](https://kit.svelte.dev/) + Svelte 5 (runes), TypeScript
