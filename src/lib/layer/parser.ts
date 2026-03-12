@@ -15,6 +15,8 @@ export function parseLayer(text: string): Layer {
     const type = tokens[i++];
     if (type === '&trans') {
       bindings.push({ tap: '', trans: true });
+    } else if (type === '&ok') {
+      bindings.push({ tap: tokens[i++], command: true });
     } else if (type === '&kp') {
       bindings.push({ tap: display(tokens[i++]) });
     } else if (type === '&lt') {

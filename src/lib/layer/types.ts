@@ -5,6 +5,7 @@ export interface Binding {
   hold?: string;         // display string for the hold action (if any)
   holdType?: HoldType;   // 'modifier' for &ht, 'layer' for &lt
   trans?: boolean;       // &trans — passes through to the layer below
+  command?: boolean;     // &ok — tap holds a '_'-separated description to render as legend
 }
 
 export interface Layer {

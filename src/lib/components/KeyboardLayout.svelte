@@ -103,31 +103,50 @@
 				stroke={keyStroke(key, binding)}
 			/>
 			{#if showLegend}
-				<text
-					x="0"
-					y={tapY}
-					text-anchor="middle"
-					dominant-baseline="central"
-					font-size={key.h * 0.35}
-					fill="var(--color-legend-tap)"
-					font-family="system-ui, sans-serif"
-				>
-					{binding!.tap}
-				</text>
-				{#if binding!.hold}
+				{#if binding!.command}
+					{@const words = binding!.tap.split('_')}
+					{@const fontSize = key.h * 0.25}
+					{@const lineH = fontSize * 1.2}
+					{@const startY = -((words.length - 1) * lineH) / 2}
 					<text
 						x="0"
-						y={holdY}
 						text-anchor="middle"
 						dominant-baseline="central"
-						font-size={key.h * 0.22}
+						font-size={fontSize}
+						fill="var(--color-legend-command)"
 						font-family="system-ui, sans-serif"
-						fill={binding!.holdType === 'layer'
-							? 'var(--color-legend-layer)'
-							: 'var(--color-legend-hold)'}
 					>
-						{binding!.hold}
+						{#each words as word, idx}
+							<tspan x="0" y={startY + idx * lineH}>{word}</tspan>
+						{/each}
 					</text>
+				{:else}
+					<text
+						x="0"
+						y={tapY}
+						text-anchor="middle"
+						dominant-baseline="central"
+						font-size={key.h * 0.35}
+						fill="var(--color-legend-tap)"
+						font-family="system-ui, sans-serif"
+					>
+						{binding!.tap}
+					</text>
+					{#if binding!.hold}
+						<text
+							x="0"
+							y={holdY}
+							text-anchor="middle"
+							dominant-baseline="central"
+							font-size={key.h * 0.22}
+							font-family="system-ui, sans-serif"
+							fill={binding!.holdType === 'layer'
+								? 'var(--color-legend-layer)'
+								: 'var(--color-legend-hold)'}
+						>
+							{binding!.hold}
+						</text>
+					{/if}
 				{/if}
 			{/if}
 		</g>

@@ -1,0 +1,6 @@
+display-name: "Command"
+bindings:
+    &ok quit        &ok close   &ok find    &ok print       &ok bold       &trans    &trans           &ok underline  &trans      &trans
+    &ok select_all  &ok redo    &ok save    &ok new_tab     &trans         &trans    &ok new_window   &ok code       &ok italic  &ok open
+    &ok cut         &ok copy    &trans      &ok paste       &ok undo       &ok link  &ok replace      &ok settings   &ok fix     &ok comment
+                                            &ok app_search  &trans         &trans    &ok app_search

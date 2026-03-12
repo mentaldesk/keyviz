@@ -55,32 +55,46 @@ bindings:
 
 **Binding types:**
 
-| Syntax | Behaviour | Example |
+| Syntax | Behaviour | Rendered as |
 |---|---|---|
-| `&kp KEY` | Tap sends a keypress | `&kp Q` → sends Q |
-| `&lt LAYER KEY` | Hold activates a layer; tap sends a keypress | `&lt WIN W` → hold for WIN layer, tap for W |
-| `&ht MOD KEY` | Hold activates a modifier; tap sends a keypress | `&ht SHIFT X` → hold for Shift, tap for X |
+| `&kp KEY` | Tap sends a keypress | Tap character, top ⅔ of keycap, charcoal |
+| `&lt LAYER KEY` | Hold activates a layer; tap sends a keypress | Tap character (top ⅔) + layer name (bottom ⅓, pink) |
+| `&ht MOD KEY` | Hold activates a modifier; tap sends a keypress | Tap character (top ⅔) + modifier name (bottom ⅓, orange) |
+| `&trans` | Transparent — passes through to the layer below | Gray keycap, no legend |
+| `&ok description` | OS/app command; description uses `_` in place of spaces | Blue description text, word-wrapped across lines |
+
+**ZMK key names** — single characters (letters, digits) render as-is. Common aliases like `EXCL`, `AMPS`, `CARET`, `BSPC`, `RET`, `SPACE`, `UP` etc. are mapped to their display characters. See `src/lib/layer/keymap.ts` for the full list.
 
 **Binding order** matches the visual layout: for each zone (in YAML declaration order), rows are listed top-to-bottom, and within each row the non-mirrored (left) columns come first in YAML order, followed by the mirrored (right) columns in reverse YAML order (so they read left-to-right visually).
 
-See `src/keyboards/paw/base.layer` for a complete example.
+See `src/keyboards/paw/` for complete examples of all binding types.
+
+## Interactive layer switching
+
+Mousedown on a key with an `&lt LAYER` binding switches the display to that layer. The held key is highlighted in green. Releasing the mouse anywhere returns to the base layer.
+
+Keys showing `&trans` in the active layer are rendered gray (they fall through to the layer below and don't do anything special on the current layer).
 
 ## Visual conventions
 
-- **Tap character** — charcoal text, occupies the top two-thirds of the keycap
-- **Hold modifier (`&ht`)** — orange text, bottom third
-- **Hold layer (`&lt`)** — pink text, bottom third
-- **Unbound keys** — rendered in dark gray with no legend
+- **Tap character** (`&kp`) — charcoal, top two-thirds of keycap
+- **Hold modifier** (`&ht`) — orange, bottom third
+- **Hold layer** (`&lt`) — pink, bottom third
+- **Command** (`&ok`) — blue, centered and word-wrapped
+- **Transparent** (`&trans`) — dark gray, no legend
+- **Held key** — green background, no legend
 
 Colors are defined as CSS custom properties in `src/lib/theme.css` and can be changed there:
 
 ```css
 :root {
-  --color-key-bg: #f5f0e8;       /* bone white keycap */
-  --color-legend-tap: #110e1f;   /* charcoal */
-  --color-legend-hold: #ff811c;  /* orange — hold modifier */
-  --color-legend-layer: #a63e6f; /* pink — layer tap */
-  --color-key-stroke: #d0c8b8;   /* key border */
+  --color-key-bg: #f5f0e8;         /* bone white keycap */
+  --color-legend-tap: #110e1f;     /* charcoal */
+  --color-legend-hold: #ff811c;    /* orange — hold modifier */
+  --color-legend-layer: #a63e6f;   /* pink — layer tap */
+  --color-legend-command: #4b73b8; /* blue — &ok command */
+  --color-key-held: #40b07e;       /* green — held/activator key */
+  --color-key-stroke: #d0c8b8;     /* key border */
 }
 ```
 
