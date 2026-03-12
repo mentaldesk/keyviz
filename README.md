@@ -62,6 +62,9 @@ bindings:
 | `&ht MOD KEY` | Hold activates a modifier; tap sends a keypress | Tap character (top ⅔) + modifier name (bottom ⅓, orange) |
 | `&trans` | Transparent — passes through to the layer below | Gray keycap, no legend |
 | `&ok description` | OS/app command; description uses `_` in place of spaces | Blue description text, word-wrapped across lines |
+| `&bt 0`/`&bt 1`/`&bt 2` | Switch to Bluetooth channel | Bluetooth symbol + channel number |
+| `&bt BT_CLR` | Clear Bluetooth pairing | Bluetooth symbol + "CLR" |
+| `&os_sel MAC`/`WIN`/`LIN` | Select OS (affects modifier behaviour) | Apple / Windows / Linux icon |
 
 **ZMK key names** — single characters (letters, digits) render as-is. Common aliases like `EXCL`, `AMPS`, `CARET`, `BSPC`, `RET`, `SPACE`, `UP` etc. are mapped to their display characters. See `src/lib/layer/keymap.ts` for the full list.
 

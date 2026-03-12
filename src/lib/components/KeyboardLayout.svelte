@@ -69,6 +69,39 @@
 	}
 </script>
 
+<!--
+  Bluetooth symbol: vertical bar with right-pointing zigzag, designed in a ±1 unit box.
+  Caller wraps in <g transform="translate(x,y) scale(s)"> to position and size.
+-->
+{#snippet btIcon(size: number)}
+	{@const h = size / 2}
+	{@const rw = size * 0.42}
+	{@const rm = size * 0.22}
+	{@const pts = `0,${-h} ${rw},${-rm} 0,0 ${rw},${rm} 0,${h}`}
+	<g
+		stroke="var(--color-legend-tap)"
+		stroke-width={size * 0.1}
+		fill="none"
+		stroke-linecap="round"
+		stroke-linejoin="round"
+	>
+		<line x1="0" y1={-h} x2="0" y2={h} />
+		<polyline points={pts} />
+	</g>
+{/snippet}
+
+<!--
+  Windows logo: four brand-coloured squares in a 2×2 grid.
+-->
+{#snippet windowsIcon(size: number)}
+	{@const s = size * 0.46}
+	{@const g = size * 0.07}
+	<rect x={-s - g} y={-s - g} width={s} height={s} fill="#f35325" />
+	<rect x={g} y={-s - g} width={s} height={s} fill="#81bc06" />
+	<rect x={-s - g} y={g} width={s} height={s} fill="#05a6f0" />
+	<rect x={g} y={g} width={s} height={s} fill="#ffba08" />
+{/snippet}
+
 <svg
 	viewBox="{bbox.minX} 0 {viewWidth} {viewHeight}"
 	class="w-full h-full"
@@ -105,7 +138,7 @@
 			{#if showLegend}
 				{#if binding!.command}
 					{@const words = binding!.tap.split('_')}
-					{@const fontSize = key.h * 0.25}
+					{@const fontSize = key.h * 0.20}
 					{@const lineH = fontSize * 1.2}
 					{@const startY = -((words.length - 1) * lineH) / 2}
 					<text
@@ -120,6 +153,42 @@
 							<tspan x="0" y={startY + idx * lineH}>{word}</tspan>
 						{/each}
 					</text>
+				{:else if binding!.bt}
+					{@const iconSize = key.h * 0.32}
+					{@const labelSize = key.h * 0.22}
+					<g transform="translate(0, {-labelSize * 0.8})">
+						{@render btIcon(iconSize)}
+					</g>
+					<text
+						x="0"
+						y={iconSize * 0.6 + labelSize * 0.3}
+						text-anchor="middle"
+						dominant-baseline="central"
+						font-size={labelSize}
+						fill="var(--color-legend-tap)"
+						font-family="system-ui, sans-serif"
+					>{binding!.tap}</text>
+				{:else if binding!.os}
+					{@const iconSize = key.h * 0.42}
+					{#if binding!.tap === 'WIN'}
+						{@render windowsIcon(iconSize)}
+					{:else if binding!.tap === 'MAC'}
+						<text
+							x="0"
+							y="0"
+							text-anchor="middle"
+							dominant-baseline="central"
+							font-size={iconSize}
+						>🍎</text>
+					{:else}
+						<text
+							x="0"
+							y="0"
+							text-anchor="middle"
+							dominant-baseline="central"
+							font-size={iconSize}
+						>🐧</text>
+					{/if}
 				{:else}
 					<text
 						x="0"

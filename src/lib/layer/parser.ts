@@ -15,6 +15,11 @@ export function parseLayer(text: string): Layer {
     const type = tokens[i++];
     if (type === '&trans') {
       bindings.push({ tap: '', trans: true });
+    } else if (type === '&bt') {
+      const param = tokens[i++];
+      bindings.push({ tap: param === 'BT_CLR' ? 'CLR' : param, bt: true });
+    } else if (type === '&os_sel') {
+      bindings.push({ tap: tokens[i++], os: true });
     } else if (type === '&ok') {
       bindings.push({ tap: tokens[i++], command: true });
     } else if (type === '&kp') {

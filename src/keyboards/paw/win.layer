@@ -1,0 +1,6 @@
+display-name: "Window"
+bindings:
+   &trans  &trans   &trans    &trans    &trans     &ok next_instance  &ok pin_left   &ok win_max       &ok pin_right  &trans
+   &trans  &trans   &trans    &trans    &trans     &ok desktop        &ok last_tab   &ok next_screen   &ok next_tab   &ok mission_control
+   &trans  &trans   &trans    &trans    &trans     &trans             &ok zoom_out   &ok zoom_reset    &ok zoom_in    &trans
+                              &trans    &trans     &trans             &trans

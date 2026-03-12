@@ -6,6 +6,8 @@ export interface Binding {
   holdType?: HoldType;   // 'modifier' for &ht, 'layer' for &lt
   trans?: boolean;       // &trans — passes through to the layer below
   command?: boolean;     // &ok — tap holds a '_'-separated description to render as legend
+  bt?: boolean;          // &bt — tap holds channel number ('0','1','2') or 'CLR'
+  os?: boolean;          // &os_sel — tap holds 'MAC', 'WIN', or 'LIN'
 }
 
 export interface Layer {

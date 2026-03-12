@@ -1,0 +1,6 @@
+display-name: "Bluetooth"
+bindings:
+   &trans  &trans  &trans  &trans  &trans     &trans       &os_sel MAC   &os_sel WIN  &os_sel LIN  &trans
+   &trans  &trans  &trans  &trans  &trans     &trans       &trans        &trans       &trans       &trans
+   &trans  &trans  &trans  &trans  &trans     &trans       &bt 0         &bt 1        &bt 2        &trans
+                           &trans  &trans     &bt BT_CLR   &trans
