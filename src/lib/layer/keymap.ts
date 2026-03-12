@@ -2,27 +2,53 @@ import type { KeyPosition } from '$lib/ergogen';
 import type { ErgogenConfig } from '$lib/ergogen';
 
 const ZMK_DISPLAY: Record<string, string> = {
-  SQT: "'",
-  COMMA: ',',
+  // Letters and numbers pass through as-is (A-Z, N0-N9 if needed)
+
+  // Unshifted symbols
+  MINUS: '-',   UNDER: '_',    UNDERSCORE: '_',
+  EQUAL: '=',   PLUS: '+',
+  LBKT: '[',    LEFT_BRACKET: '[',
+  RBKT: ']',    RIGHT_BRACKET: ']',
+  BSLH: '\\',   BACKSLASH: '\\',
+  SEMI: ';',    SEMICOLON: ';',
+  SQT: "'",     SINGLE_QUOTE: "'",
+  DQT: '"',     DOUBLE_QUOTES: '"',
+  GRAVE: '`',   GRAV: '`',
+  COMMA: ',',   CMMA: ',',
   DOT: '.',
-  SLASH: '/',
-  SEMI: ';',
-  MINUS: '-',
-  EQUAL: '=',
-  LBKT: '[',
-  RBKT: ']',
-  BSLH: '\\',
-  GRAVE: '`',
+  SLASH: '/',   FSLH: '/',
+
+  // Shifted symbols
+  EXCL: '!',    EXCLAMATION: '!',
+  AT: '@',      AT_SIGN: '@',
+  HASH: '#',    POUND: '#',
+  DLLR: '$',    DOLLAR: '$',
+  PRCNT: '%',   PERCENT: '%',
+  CARET: '^',   CRRT: '^',
+  AMPS: '&',    AMPERSAND: '&',
+  ASTRK: '*',   ASTERISK: '*',
+  LPAR: '(',    LEFT_PARENTHESIS: '(',
+  RPAR: ')',    RIGHT_PARENTHESIS: ')',
+  LBRC: '{',    LEFT_BRACE: '{',
+  RBRC: '}',    RIGHT_BRACE: '}',
+  PIPE: '|',
+  COLON: ':',   COLN: ':',
+  TILDE: '~',   TILD: '~',
+  LT: '<',      LESS_THAN: '<',
+  GT: '>',      GREATER_THAN: '>',
+  QMARK: '?',   QUESTION: '?',
+
+  // Navigation / editing
   BSPC: '⌫',
   DEL: '⌦',
-  SPACE: 'SPC',
   RET: '↵',
   ESC: '⎋',
   TAB: '⇥',
+  SPACE: 'SPC',
   UP: '↑',
   DOWN: '↓',
   LEFT: '←',
-  RIGHT: '→'
+  RIGHT: '→',
 };
 
 export function display(zmk: string): string {

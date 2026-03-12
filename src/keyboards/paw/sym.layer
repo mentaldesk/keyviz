@@ -1,0 +1,6 @@
+display-name: "Symbol"
+bindings:
+   &trans      &kp UNDER    &kp ASTRK    &kp TILDE    &trans           &trans       &trans       &trans       &trans       &trans
+   &kp EXCL    &kp MINUS    &kp PLUS     &kp EQUAL    &kp CARET        &trans       &trans       &trans       &trans       &trans
+   &kp BSLH    &kp PIPE     &kp AMPS     &kp PRCNT    &trans           &trans       &trans       &trans       &trans       &trans
+                            &trans       &trans       &trans           &trans       &trans       &trans

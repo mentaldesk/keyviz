@@ -13,7 +13,9 @@ export function parseLayer(text: string): Layer {
   let i = 0;
   while (i < tokens.length) {
     const type = tokens[i++];
-    if (type === '&kp') {
+    if (type === '&trans') {
+      bindings.push({ tap: '', trans: true });
+    } else if (type === '&kp') {
       bindings.push({ tap: display(tokens[i++]) });
     } else if (type === '&lt') {
       const hold = tokens[i++];

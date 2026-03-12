@@ -4,4 +4,5 @@
   --color-legend-hold: #ff811c;   /* orange — hold modifier (&ht) */
   --color-legend-layer: #a63e6f;  /* pink — layer tap (&lt) */
   --color-key-stroke: #d0c8b8;    /* subtle key border */
+  --color-key-held: #40b07e;      /* green — key being held to activate current layer */
 }
