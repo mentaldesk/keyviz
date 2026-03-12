@@ -5,8 +5,10 @@
 	interface Props {
 		keys: KeyPosition[];
 		bindings?: Record<string, Binding>;
-		/** Key name currently being held (rendered green, no legend) */
+		/** Key name currently being held to activate a layer (rendered green, legend hidden) */
 		heldKey?: string;
+		/** Key names to highlight green for combo display (legend still shown) */
+		highlightedKeys?: Set<string>;
 		onKeyHold?: (keyName: string) => void;
 		/** Visual gap between keys (bezel), in mm */
 		gap?: number;
@@ -14,7 +16,7 @@
 		padding?: number;
 	}
 
-	let { keys, bindings, heldKey, onKeyHold, gap = 1.5, padding = 8 }: Props =
+	let { keys, bindings, heldKey, highlightedKeys, onKeyHold, gap = 1.5, padding = 8 }: Props =
 		$props();
 
 	// Bounding box using actual rotated corners of each key (not just centers).
@@ -57,13 +59,13 @@
 	}
 
 	function keyFill(key: KeyPosition, binding: Binding | undefined): string {
-		if (key.name === heldKey) return 'var(--color-key-held)';
+		if (key.name === heldKey || highlightedKeys?.has(key.name)) return 'var(--color-key-held)';
 		if (binding && !binding.trans) return 'var(--color-key-bg)';
 		return '#374151';
 	}
 
 	function keyStroke(key: KeyPosition, binding: Binding | undefined): string {
-		if (key.name === heldKey) return 'var(--color-key-held)';
+		if (key.name === heldKey || highlightedKeys?.has(key.name)) return 'var(--color-key-held)';
 		if (binding && !binding.trans) return 'var(--color-key-stroke)';
 		return '#6b7280';
 	}

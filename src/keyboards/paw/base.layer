@@ -4,3 +4,12 @@ bindings:
    &kp A        &kp R        &kp S        &kp T           &ht meh G        &ht meh M       &kp N           &kp E           &kp I         &kp O
    &ht SHIFT X  &ht CTRL C   &ht ALT D    &ht GUI V       &kp Z            &kp K           &ht GUI H       &ht ALT COMMA   &ht CTRL DOT  &ht SHIFT SLASH
                                           &lt BRAC SPACE  &lt NAV DEL      &lt FUNC BSPC   &lt SYM SPACE
+combos:
+    esc:
+        description: "ESC"
+        key-positions: 11 12 13
+        bindings: &kp ESC
+    enter:
+        description: "Enter"
+        key-positions: 16 17 18
+        bindings: &kp ENTER

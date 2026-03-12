@@ -1,4 +1,4 @@
-import type { Layer, Binding } from './types';
+import type { Layer, Binding, Combo } from './types';
 import { display } from './keymap';
 
 export function parseLayer(text: string): Layer {
@@ -6,7 +6,10 @@ export function parseLayer(text: string): Layer {
   const name = nameMatch?.[1] ?? 'Unknown';
 
   const bindingsStart = text.indexOf('bindings:');
-  const rawBindings = text.slice(bindingsStart + 'bindings:'.length);
+  // Truncate bindings section at combos: so combo text isn't parsed as bindings
+  const combosStart = text.indexOf('\ncombos:');
+  const bindingsEnd = combosStart !== -1 ? combosStart : text.length;
+  const rawBindings = text.slice(bindingsStart + 'bindings:'.length, bindingsEnd);
   const tokens = rawBindings.trim().split(/\s+/).filter(Boolean);
 
   const bindings: Binding[] = [];
@@ -34,5 +37,53 @@ export function parseLayer(text: string): Layer {
       bindings.push({ tap: display(tap), hold, holdType: 'modifier' });
     }
   }
-  return { name, bindings };
+
+  const combos = combosStart !== -1 ? parseCombos(text.slice(combosStart + 1)) : [];
+
+  return { name, bindings, combos };
+}
+
+function parseCombos(text: string): Combo[] {
+  // text starts with 'combos:\n...'
+  const lines = text.slice('combos:'.length).split('\n');
+  const combos: Combo[] = [];
+
+  let comboIndent: number | null = null;
+  let propIndent: number | null = null;
+  let currentName = '';
+  let currentProps: Record<string, string> = {};
+
+  const flush = () => {
+    if (!currentName) return;
+    const description = (currentProps['description'] ?? currentName).replace(/^"|"$/g, '').trim();
+    const keyPositions = (currentProps['key-positions'] ?? '')
+      .trim().split(/\s+/).filter(Boolean).map(Number);
+    combos.push({ name: currentName, description, keyPositions });
+  };
+
+  for (const line of lines) {
+    if (!line.trim()) continue;
+    const indent = (line.match(/^(\s*)/)?.[1] ?? '').length;
+    const content = line.trim();
+
+    if (comboIndent === null && indent > 0) comboIndent = indent;
+
+    if (indent === comboIndent && content.endsWith(':')) {
+      flush();
+      currentName = content.slice(0, -1);
+      currentProps = {};
+      propIndent = null;
+    } else if (comboIndent !== null && indent > comboIndent && currentName) {
+      if (propIndent === null) propIndent = indent;
+      if (indent === propIndent) {
+        const colonIdx = content.indexOf(':');
+        if (colonIdx > 0) {
+          currentProps[content.slice(0, colonIdx).trim()] = content.slice(colonIdx + 1).trim();
+        }
+      }
+    }
+  }
+  flush();
+
+  return combos;
 }

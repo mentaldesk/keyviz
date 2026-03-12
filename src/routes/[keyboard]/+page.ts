@@ -65,5 +65,5 @@ export const load: PageLoad = async ({ params }) => {
 		allLayers[layerKey] = { layer, bindings };
 	}
 
-	return { keyboard, keys, allLayers };
+	return { keyboard, keys, allLayers, orderedKeys };
 };

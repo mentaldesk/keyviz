@@ -10,7 +10,14 @@ export interface Binding {
   os?: boolean;          // &os_sel — tap holds 'MAC', 'WIN', or 'LIN'
 }
 
+export interface Combo {
+  name: string;
+  description: string;
+  keyPositions: number[];
+}
+
 export interface Layer {
   name: string;
   bindings: Binding[];
+  combos: Combo[];
 }
