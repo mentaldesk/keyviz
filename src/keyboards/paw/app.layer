@@ -1,0 +1,6 @@
+display-name: "App"
+bindings:
+    &trans  &trans       &trans   &trans        &trans      &trans  &trans  &trans  &trans  &trans
+    &trans  &ok last_app &trans   &ok next_app  &trans      &trans  &trans  &trans  &trans  &trans
+    &trans  &trans       &trans   &trans        &trans      &trans  &trans  &trans  &trans  &trans
+                                  &trans        &trans      &trans  &trans

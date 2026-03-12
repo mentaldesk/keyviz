@@ -1,0 +1,6 @@
+display-name: "Media"
+bindings:
+   &ok force_quit   &ok screen_shot &ok screen_file  &ok copy_screen      &trans       &trans       &trans       &trans       &trans       &trans
+   &trans           &ok volume_down &ok mute         &ok volume_up        &trans       &trans       &trans       &trans       &trans       &trans
+   &trans           &trans          &trans           &trans               &trans       &trans       &trans       &trans       &trans       &trans
+                                    &trans           &trans               &trans       &trans       &trans       &trans

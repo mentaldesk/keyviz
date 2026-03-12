@@ -1,0 +1,6 @@
+display-name: "Mirror"
+bindings:
+    &kp SQT   &kp Y   &kp U     &kp L   &kp J        &kp B    &kp P    &kp F    &kp W    &kp Q
+    &kp O     &kp I   &kp E     &kp N   &kp M        &kp G    &kp T    &kp S    &kp R    &kp A
+    &kp SLASH &kp DOT &kp COMMA &kp H   &kp K        &kp Z    &kp V    &kp D    &kp C    &kp X
+                                &trans  &trans       &trans   &trans

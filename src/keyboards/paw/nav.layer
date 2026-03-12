@@ -1,0 +1,6 @@
+display-name: "Nav"
+bindings:
+   &trans   &trans    &trans    &trans    &trans      &ok home         &ok prev_word   &kp UP       &ok next_word  &ok end
+   &trans   &trans    &trans    &trans    &trans      &ok doc_start    &kp LEFT        &kp DOWN     &kp RIGHT      &ok page_up
+   &trans   &trans    &trans    &trans    &trans      &ok doc_end      &ok line_start  &trans       &ok line_end   &ok page_down
+                                &trans    &trans      &trans           &trans
