@@ -57,23 +57,19 @@
 	</div>
 
 	{#if baseCombos.length > 0}
-		<section class="mt-10">
-			<h2 class="text-lg font-semibold mb-4 text-gray-300">Combos</h2>
-			<div class="flex flex-col gap-2">
+		<section class="mt-6">
+			<h2 class="text-lg font-semibold mb-3 text-gray-300">Combos</h2>
+			<div class="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory">
 				{#each baseCombos as combo}
 					{@const keyNames = comboKeyNames(combo.keyPositions)}
 					<!-- svelte-ignore a11y_no_static_element_interactions -->
 					<div
-						class="flex items-center gap-4 rounded-lg px-3 py-2 hover:bg-gray-800 transition-colors cursor-default"
+						class="snap-start shrink-0 w-52 rounded-xl bg-gray-900 border border-gray-800 hover:border-gray-600 px-3 pt-2 pb-3 transition-colors cursor-default"
 						onmouseenter={() => { hoveredComboKeys = new Set(keyNames); }}
 						onmouseleave={() => { hoveredComboKeys = null; }}
 					>
-						<span class="w-24 text-sm font-medium text-gray-300 shrink-0 text-right">
-							{combo.description}
-						</span>
-						<div class="w-48 shrink-0">
-							<ComboPreview keys={data.keys} highlightedKeyNames={keyNames} />
-						</div>
+						<p class="text-xs font-medium text-gray-400 text-center mb-2">{combo.description}</p>
+						<ComboPreview keys={data.keys} highlightedKeyNames={keyNames} />
 					</div>
 				{/each}
 			</div>

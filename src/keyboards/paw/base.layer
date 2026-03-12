@@ -13,3 +13,19 @@ combos:
         description: "Enter"
         key-positions: 16 17 18
         bindings: &kp ENTER
+    tab:
+        description: "Tab"
+        key-positions: 3 4
+        bindings: &kp TAB
+    grave:
+        description: "Backtick"
+        key-positions: 5 6
+        bindings: &kp GRAVE
+    brac:
+        description: "Bracket (One-Shot)"
+        key-positions: 13 14
+        bindings: &sl BRAC
+    sym:
+        description: "Symbol (One-Shot)"
+        key-positions: 15 16
+        bindings: &sl SYM
