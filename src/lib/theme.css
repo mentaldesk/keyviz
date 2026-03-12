@@ -1,0 +1,7 @@
+:root {
+  --color-key-bg: #f5f0e8;        /* bone white */
+  --color-legend-tap: #110e1f;    /* charcoal */
+  --color-legend-hold: #ff811c;   /* orange — hold modifier (&ht) */
+  --color-legend-layer: #a63e6f;  /* pink — layer tap (&lt) */
+  --color-key-stroke: #d0c8b8;    /* subtle key border */
+}

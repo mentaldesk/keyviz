@@ -16,7 +16,10 @@
 
 	<h1 class="text-3xl font-bold capitalize mb-8">{data.keyboard}</h1>
 
+	{#if data.layer}
+		<p class="text-center text-sm font-medium text-gray-400 mb-3">{data.layer.name} Layer</p>
+	{/if}
 	<div class="bg-gray-900 rounded-2xl p-8 border border-gray-800">
-		<KeyboardLayout keys={data.keys} />
+		<KeyboardLayout keys={data.keys} bindings={data.bindings} />
 	</div>
 </main>

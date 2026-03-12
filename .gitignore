@@ -5,3 +5,4 @@ build/
 .env.*
 !.env.example
 vite.config.ts.timestamp-*
+.claude/settings.local.json

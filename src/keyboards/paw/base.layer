@@ -1,0 +1,6 @@
+display-name: "Base"
+bindings:
+   &kp Q        &lt WIN W    &lt CMD F    &lt NUM P       &lt BT B         &lt MEDIA J     &kp L           &lt CMD U       &lt APP Y     &kp SQT
+   &kp A        &kp R        &kp S        &kp T           &ht meh G        &ht meh M       &kp N           &kp E           &kp I         &kp O
+   &ht SHIFT X  &ht CTRL C   &ht ALT D    &ht GUI V       &kp Z            &kp K           &ht GUI H       &ht ALT COMMA   &ht CTRL DOT  &ht SHIFT SLASH
+                                          &lt BRAC SPACE  &lt NAV DEL      &lt FUNC BSPC   &lt SYM SPACE
