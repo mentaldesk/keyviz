@@ -1,5 +1,6 @@
 {
   "buildCommand": "pnpm build",
   "outputDirectory": "build",
-  "framework": null
+  "framework": null,
+  "cleanUrls": true
 }
