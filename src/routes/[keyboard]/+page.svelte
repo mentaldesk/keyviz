@@ -72,7 +72,11 @@
 						onmouseleave={() => { hoveredComboKeys = null; }}
 						onmousedown={() => { if (combo.activatesLayer) heldComboLayer = combo.activatesLayer; }}
 					>
-						<p class="text-xs font-medium text-gray-400 text-center mb-2">{combo.description}</p>
+						<p
+						class="text-xs font-medium text-center mb-2"
+						style:color={combo.activatesLayer ? '#a63e6f' : combo.oneshotMod ? '#ff811c' : undefined}
+						class:text-gray-400={!combo.activatesLayer && !combo.oneshotMod}
+					>{combo.description}</p>
 						<ComboPreview keys={data.keys} highlightedKeyNames={keyNames} />
 					</div>
 				{/each}

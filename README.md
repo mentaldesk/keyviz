@@ -72,6 +72,43 @@ bindings:
 
 See `src/keyboards/paw/` for complete examples of all binding types.
 
+### 3. Combos — in the `.layer` file
+
+Combos are key combinations that trigger a binding when multiple physical keys are pressed simultaneously. They are defined in the same `.layer` file as bindings, after a `combos:` section.
+
+```
+combos:
+    esc:
+        description: "ESC"
+        key-positions: 11 12 13
+        bindings: &kp ESC
+    brac:
+        description: "Bracket (One-Shot)"
+        key-positions: 13 14
+        bindings: &sl BRAC
+```
+
+Each combo entry has:
+
+| Field | Description |
+|---|---|
+| `description` | Text label shown in the diagram (quoted string) |
+| `key-positions` | Space-separated list of key indices (0-based, matching binding order) |
+| `bindings` | A single ZMK binding — same syntax as in the `bindings:` section |
+
+**Binding types for combos:**
+
+| Syntax | Behaviour |
+|---|---|
+| `&kp KEY` | Sends a keypress |
+| `&sl LAYER` | One-shot layer activation (highlighted in pink, clickable in the diagram) |
+| `&skq MOD` | One-shot modifier |
+| `&caps_word` | Activates Caps Word |
+
+Combos are rendered as arcs connecting the involved keys. `&sl LAYER` combos are clickable — mousedown switches to that layer just like an `&lt` binding.
+
+See `src/keyboards/paw/base.layer` for a complete example.
+
 ## Interactive layer switching
 
 Mousedown on a key with an `&lt LAYER` binding switches the display to that layer. The held key is highlighted in green. Releasing the mouse anywhere returns to the base layer.

@@ -15,6 +15,7 @@ export interface Combo {
   description: string;
   keyPositions: number[];
   activatesLayer?: string;   // populated when bindings is &sl LAYER
+  oneshotMod?: boolean;      // true when bindings is &skq MOD
 }
 
 export interface Layer {

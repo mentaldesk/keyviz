@@ -61,7 +61,8 @@ function parseCombos(text: string): Combo[] {
     const bindingTokens = (currentProps['bindings'] ?? '').trim().split(/\s+/).filter(Boolean);
     const activatesLayer =
       bindingTokens[0] === '&sl' && bindingTokens[1] ? bindingTokens[1] : undefined;
-    combos.push({ name: currentName, description, keyPositions, activatesLayer });
+    const oneshotMod = bindingTokens[0] === '&skq' ? true : undefined;
+    combos.push({ name: currentName, description, keyPositions, activatesLayer, oneshotMod });
   };
 
   for (const line of lines) {
