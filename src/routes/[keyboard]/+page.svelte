@@ -3,10 +3,11 @@
 	import KeyboardLayout from '$lib/components/KeyboardLayout.svelte';
 	import ComboPreview from '$lib/components/ComboPreview.svelte';
 	import { page } from '$app/state';
+	import { browser } from '$app/environment';
 
 	let { data }: { data: PageData } = $props();
 
-	const embedded = $derived(page.url.searchParams.get('embedded') === 'true');
+	const embedded = $derived(browser && page.url.searchParams.get('embedded') === 'true');
 
 	let heldKeyName = $state<string | null>(null);
 	let hoveredComboKeys = $state<Set<string> | null>(null);
