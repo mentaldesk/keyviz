@@ -2,8 +2,11 @@
 	import type { PageData } from './$types';
 	import KeyboardLayout from '$lib/components/KeyboardLayout.svelte';
 	import ComboPreview from '$lib/components/ComboPreview.svelte';
+	import { page } from '$app/state';
 
 	let { data }: { data: PageData } = $props();
+
+	const embedded = $derived(page.url.searchParams.get('embedded') === 'true');
 
 	let heldKeyName = $state<string | null>(null);
 	let hoveredComboKeys = $state<Set<string> | null>(null);
@@ -40,11 +43,13 @@
 </svelte:head>
 
 <main class="container mx-auto px-4 py-8">
-	<a href="/" class="text-gray-500 hover:text-gray-300 text-sm mb-6 inline-block transition-colors">
-		← All keyboards
-	</a>
+	{#if !embedded}
+		<a href="/" class="text-gray-500 hover:text-gray-300 text-sm mb-6 inline-block transition-colors">
+			← All keyboards
+		</a>
 
-	<h1 class="text-3xl font-bold capitalize mb-8">{data.keyboard}</h1>
+		<h1 class="text-3xl font-bold capitalize mb-8">{data.keyboard}</h1>
+	{/if}
 
 	{#if activeEntry}
 		<p class="text-center text-sm font-medium text-gray-400 mb-3">{activeEntry.layer.name} Layer</p>
