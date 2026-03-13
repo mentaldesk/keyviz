@@ -12,18 +12,25 @@
 	let heldKeyName = $state<string | null>(null);
 	let hoveredComboKeys = $state<Set<string> | null>(null);
 	let heldComboLayer = $state<string | null>(null);
+	let selectedLayerKey = $state('BASE');
 
-	// Determine which layer to display — combo &sl takes precedence, then held &lt key
+	// Determine which layer to display — combo &sl takes precedence, then held &lt key, then selected
 	const activeLayerKey = $derived(
 		heldComboLayer ??
-		(heldKeyName && data.allLayers.BASE?.bindings[heldKeyName]?.holdType === 'layer'
-			? data.allLayers.BASE.bindings[heldKeyName].hold!
-			: 'BASE')
+		(heldKeyName && data.allLayers[selectedLayerKey]?.bindings[heldKeyName]?.holdType === 'layer'
+			? data.allLayers[selectedLayerKey].bindings[heldKeyName].hold!
+			: selectedLayerKey)
 	);
 
 	const activeEntry = $derived(data.allLayers[activeLayerKey] ?? data.allLayers.BASE);
 
-	const baseCombos = $derived(data.allLayers.BASE?.layer.combos ?? []);
+	const layerKeys = $derived(
+		Object.keys(data.allLayers).sort((a, b) =>
+			a === 'BASE' ? -1 : b === 'BASE' ? 1 : a.localeCompare(b)
+		)
+	);
+
+	const baseCombos = $derived(data.allLayers[selectedLayerKey]?.layer.combos ?? []);
 
 	function comboKeyNames(keyPositions: number[]): string[] {
 		return keyPositions.map((i) => data.orderedKeys[i]?.name).filter((n): n is string => !!n);
@@ -52,8 +59,17 @@
 		<h1 class="text-3xl font-bold capitalize mb-8">{data.keyboard}</h1>
 	{/if}
 
-	{#if activeEntry}
-		<p class="text-center text-sm font-medium text-gray-400 mb-3">{activeEntry.layer.name} Layer</p>
+	{#if layerKeys.length > 0}
+		<div class="flex justify-center mb-3">
+			<select
+				bind:value={selectedLayerKey}
+				class="bg-gray-900 border border-gray-700 text-gray-300 text-sm rounded-lg px-3 py-1.5 focus:outline-none focus:border-gray-500 cursor-pointer"
+			>
+				{#each layerKeys as layerKey}
+					<option value={layerKey}>{data.allLayers[layerKey].layer.name} Layer</option>
+				{/each}
+			</select>
+		</div>
 	{/if}
 	<div class="bg-gray-900 rounded-2xl p-8 border border-gray-800">
 		<KeyboardLayout
