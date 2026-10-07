@@ -9,6 +9,7 @@ export interface ErgogenKeyProps {
 	width?: ErgogenValue;
 	height?: ErgogenValue;
 	encoder?: boolean;
+	label?: string;
 }
 
 export interface ErgogenAnchor {
@@ -45,4 +46,5 @@ export interface KeyPosition {
 	row: string;
 	mirrored?: boolean;
 	encoder?: boolean;
+	label?: string;
 }

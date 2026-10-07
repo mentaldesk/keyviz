@@ -136,7 +136,8 @@ export function parseErgogenConfig(config: ErgogenConfig): KeyPosition[] {
 					zone: zoneName,
 					col: colName,
 					row: rowName,
-					encoder: merged.encoder
+					encoder: merged.encoder,
+					label: merged.label
 				};
 
 				keysByName.set(key.name, key);

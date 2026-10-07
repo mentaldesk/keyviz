@@ -137,6 +137,17 @@
 				fill={keyFill(key, binding)}
 				stroke={keyStroke(key, binding)}
 			/>
+			{#if key.label}
+				<text
+					x="0"
+					y={key.h / 2 + key.h * 0.2}
+					text-anchor="middle"
+					dominant-baseline="central"
+					font-size={key.h * 0.25}
+					fill="white"
+					font-family="system-ui, sans-serif"
+				>{key.label}</text>
+			{/if}
 			{#if showLegend}
 				{#if binding!.command}
 					{@const words = binding!.tap.split('_')}

@@ -269,6 +269,7 @@ points:
             width: 18
             height: 18
             encoder: true
+            label: Volume
         h:
           key:
             spread: 92.011
@@ -348,6 +349,7 @@ points:
             width: 18
             height: 18
             encoder: true
+            label: Scroll
         vault:
           key:
             spread: 49.7346
