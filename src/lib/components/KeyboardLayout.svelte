@@ -203,8 +203,9 @@
 						>🐧</text>
 					{/if}
 				{:else}
-					{@const tap = key.legend ?? binding!.tap}
-					{@const tapSize = Math.min(key.h * 0.35, (key.w - gap - 2) / (0.75 * [...tap].length))}
+					{@const legend = !binding!.tap && key.legend}
+					{@const tap = legend || binding!.tap}
+					{@const tapSize = Math.min(key.h * (legend ? 0.55 : 0.35), (key.w - gap - 2) / (0.75 * [...tap].length))}
 					<text
 						x="0"
 						y={tapY}
