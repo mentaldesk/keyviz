@@ -26,6 +26,9 @@ export function parseLayer(text: string): Layer {
 
 const OUTPUTS: Record<string, string> = { OUT_USB: 'USB', OUT_BLE: 'BLE', OUT_TOG: 'USB/BLE' };
 
+// ZMK needs the suffix when a layer shares a keycode's name (e.g. SPACE).
+const layerName = (macro: string) => macro.replace(/_LAYER$/, '');
+
 function parseBinding(type: string, params: string[]): Binding {
   switch (type) {
     case '&trans':
@@ -44,9 +47,9 @@ function parseBinding(type: string, params: string[]): Binding {
     case '&kp':
       return { tap: display(params[0]) };
     case '&lt':
-      return { tap: display(params[1]), hold: params[0], holdType: 'layer' };
+      return { tap: display(params[1]), hold: layerName(params[0]), holdType: 'layer' };
     case '&mo':
-      return { tap: '', hold: params[0], holdType: 'layer' };
+      return { tap: '', hold: layerName(params[0]), holdType: 'layer' };
     case '&ht':
       return { tap: display(params[1]), hold: params[0], holdType: 'modifier' };
     case '&out':
@@ -77,7 +80,7 @@ function parseCombos(text: string): Combo[] {
       .trim().split(/\s+/).filter(Boolean).map(Number);
     const bindingTokens = (currentProps['bindings'] ?? '').trim().split(/\s+/).filter(Boolean);
     const activatesLayer =
-      bindingTokens[0] === '&sl' && bindingTokens[1] ? bindingTokens[1] : undefined;
+      bindingTokens[0] === '&sl' && bindingTokens[1] ? layerName(bindingTokens[1]) : undefined;
     const oneshotMod = bindingTokens[0] === '&skq' ? true : undefined;
     combos.push({ name: currentName, description, keyPositions, activatesLayer, oneshotMod });
   };

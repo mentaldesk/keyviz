@@ -5,4 +5,4 @@ bindings:
 &kp TAB    &kp Q      &kp W      &kp E      &kp R      &kp T                 &kp Y      &kp U      &kp I      &kp O      &kp P      &kp LBKT   &kp RBKT   &kp BSLH
 &kp CAPS   &kp A      &kp S      &kp D      &kp F      &kp G      &kp C_MUTE &kp H      &kp J      &kp K      &kp L      &kp SEMI   &kp SQT    &kp RET
 &kp LSHFT  &kp Z      &kp X      &kp C      &kp V      &kp B      &kp C_PP   &mo VAULT  &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp RSHFT  &kp UP
-&kp LCTRL  &kp LALT   &kp LGUI              &kp SPACE  &lt LSPACE DEL        &kp BSPC   &kp SPACE  &kp RGUI   &kp RALT   &kp RCTRL  &kp LEFT   &kp DOWN   &kp RIGHT
+&kp LCTRL  &kp LALT   &kp LGUI              &kp SPACE  &lt SPACE_LAYER DEL   &kp BSPC   &kp SPACE  &kp RGUI   &kp RALT   &kp RCTRL  &kp LEFT   &kp DOWN   &kp RIGHT

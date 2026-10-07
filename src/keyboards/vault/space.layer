@@ -1,4 +1,4 @@
-display-name: "LSpace"
+display-name: "Space"
 bindings:
 &trans        &trans        &trans        &trans        &trans        &trans        &trans        &trans        &trans        &trans        &trans        &trans        &trans        &trans
 &trans        &trans        &trans        &trans        &trans        &trans        &trans        &trans        &trans        &trans        &trans        &kp C_BRI_DN  &kp C_BRI_UP  &trans

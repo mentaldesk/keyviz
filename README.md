@@ -43,7 +43,7 @@ points:
 
 See `src/keyboards/paw/keys.yaml` for a complete example with splay, stagger, and mirroring.
 
-Set `encoder: true` on a key to draw it as a round knob; its binding is the encoder's push switch. A `label` on a key is shown in white below it (e.g. what turning the knob does), and a `legend` replaces its tap legend on every layer (e.g. a symbol for a layer key).
+Set `encoder: true` on a key to draw it as a round knob; its binding is the encoder's push switch. A `label` on a key is shown in white below it (e.g. what turning the knob does), and a `legend` is shown on any layer where its binding has no tap legend of its own (e.g. a symbol for a `&mo` layer key).
 
 ### 2. Key bindings — `base.layer` (optional)
 
@@ -74,6 +74,8 @@ bindings:
 | any other `&behavior …` | — | Blue behaviour name and parameters |
 
 Every binding starts with `&`, so the bindings block of a ZMK `.keymap` can be pasted in as-is (see `src/keyboards/vault/`).
+
+`LAYER` is a `.layer` file's name, uppercased. A `_LAYER` suffix is ignored, since ZMK needs one when a layer shares a keycode's name: `&lt SPACE_LAYER DEL` holds `space.layer`.
 
 **ZMK key names** — single characters (letters, digits) render as-is. Common aliases like `EXCL`, `AMPS`, `CARET`, `BSPC`, `RET`, `SPACE`, `UP` etc. are mapped to their display characters. See `src/lib/layer/keymap.ts` for the full list.
 
