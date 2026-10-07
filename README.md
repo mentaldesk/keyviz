@@ -43,7 +43,7 @@ points:
 
 See `src/keyboards/paw/keys.yaml` for a complete example with splay, stagger, and mirroring.
 
-Set `encoder: true` on a key to draw it as a round knob; its binding is the encoder's push switch. A `label` on a key is shown in white below it (e.g. what turning the knob does).
+Set `encoder: true` on a key to draw it as a round knob; its binding is the encoder's push switch. A `label` on a key is shown in white below it (e.g. what turning the knob does), and a `legend` replaces its tap legend on every layer (e.g. a symbol for a layer key).
 
 ### 2. Key bindings — `base.layer` (optional)
 

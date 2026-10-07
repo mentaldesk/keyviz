@@ -203,7 +203,8 @@
 						>🐧</text>
 					{/if}
 				{:else}
-					{@const tapSize = Math.min(key.h * 0.35, (key.w - gap - 2) / (0.75 * [...binding!.tap].length))}
+					{@const tap = key.legend ?? binding!.tap}
+					{@const tapSize = Math.min(key.h * 0.35, (key.w - gap - 2) / (0.75 * [...tap].length))}
 					<text
 						x="0"
 						y={tapY}
@@ -213,7 +214,7 @@
 						fill="var(--color-legend-tap)"
 						font-family="system-ui, sans-serif"
 					>
-						{binding!.tap}
+						{tap}
 					</text>
 					{#if binding!.hold}
 						<text

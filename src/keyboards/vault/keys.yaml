@@ -355,6 +355,7 @@ points:
             spread: 49.7346
             stagger: -10.2687
             splay: 12.2364
+            legend: ☢
         n:
           key:
             spread: 19.4961
