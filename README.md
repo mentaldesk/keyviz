@@ -43,6 +43,8 @@ points:
 
 See `src/keyboards/paw/keys.yaml` for a complete example with splay, stagger, and mirroring.
 
+Set `encoder: true` on a key to draw it as a round knob; its binding is the encoder's push switch.
+
 ### 2. Key bindings — `base.layer` (optional)
 
 Defines the legends shown on each keycap. Uses a simplified subset of [ZMK](https://zmk.dev/) binding syntax.
@@ -59,12 +61,19 @@ bindings:
 |---|---|---|
 | `&kp KEY` | Tap sends a keypress | Tap character, top ⅔ of keycap, charcoal |
 | `&lt LAYER KEY` | Hold activates a layer; tap sends a keypress | Tap character (top ⅔) + layer name (bottom ⅓, pink) |
+| `&mo LAYER` | Hold activates a layer | Layer name (bottom ⅓, pink) |
 | `&ht MOD KEY` | Hold activates a modifier; tap sends a keypress | Tap character (top ⅔) + modifier name (bottom ⅓, orange) |
 | `&trans` | Transparent — passes through to the layer below | Gray keycap, no legend |
 | `&ok description` | OS/app command; description uses `_` in place of spaces | Blue description text, word-wrapped across lines |
-| `&bt 0`/`&bt 1`/`&bt 2` | Switch to Bluetooth channel | Bluetooth symbol + channel number |
+| `&none` | Does nothing | Blank keycap |
+| `&bt BT_SEL 0` (or `&bt 0`) | Switch to Bluetooth channel | Bluetooth symbol + channel number |
 | `&bt BT_CLR` | Clear Bluetooth pairing | Bluetooth symbol + "CLR" |
+| `&out OUT_USB`/`OUT_BLE` | Select USB or BLE output | Blue "USB" / "BLE" |
+| `&sys_reset`, `&bootloader` | Reset / enter bootloader | Blue "Reset" / "Boot loader" |
 | `&os_sel MAC`/`WIN`/`LIN` | Select OS (affects modifier behaviour) | Apple / Windows / Linux icon |
+| any other `&behavior …` | — | Blue behaviour name and parameters |
+
+Every binding starts with `&`, so the bindings block of a ZMK `.keymap` can be pasted in as-is (see `src/keyboards/vault/`).
 
 **ZMK key names** — single characters (letters, digits) render as-is. Common aliases like `EXCL`, `AMPS`, `CARET`, `BSPC`, `RET`, `SPACE`, `UP` etc. are mapped to their display characters. See `src/lib/layer/keymap.ts` for the full list.
 

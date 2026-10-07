@@ -132,7 +132,7 @@
 				y={-(key.h / 2) + gap / 2}
 				width={key.w - gap}
 				height={key.h - gap}
-				rx="2"
+				rx={key.encoder ? (key.w - gap) / 2 : 2}
 				stroke-width="0.5"
 				fill={keyFill(key, binding)}
 				stroke={keyStroke(key, binding)}
@@ -192,12 +192,13 @@
 						>🐧</text>
 					{/if}
 				{:else}
+					{@const tapSize = Math.min(key.h * 0.35, (key.w - gap - 2) / (0.75 * [...binding!.tap].length))}
 					<text
 						x="0"
 						y={tapY}
 						text-anchor="middle"
 						dominant-baseline="central"
-						font-size={key.h * 0.35}
+						font-size={tapSize}
 						fill="var(--color-legend-tap)"
 						font-family="system-ui, sans-serif"
 					>

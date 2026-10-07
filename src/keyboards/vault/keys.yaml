@@ -1,0 +1,470 @@
+units:
+  u: 19
+  cx: u
+  cy: u
+points:
+  zones:
+    fn:
+      anchor:
+        shift: [91.7808, -130.906]
+      rows:
+        key:
+      columns:
+        esc:
+        f1:
+          key:
+            spread: 23.75
+            stagger: 0.3837
+            splay: -1.8511
+        f2:
+          key:
+            spread: 19.2647
+            stagger: 0.2525
+            splay: -1.5014
+        f3:
+          key:
+            spread: 19.2811
+            stagger: 0.2528
+            splay: -1.5027
+        f4:
+          key:
+            spread: 19.2977
+            stagger: 0.2533
+            splay: -1.504
+        f5:
+          key:
+            spread: 24.144
+            stagger: 0.3965
+            splay: -1.8818
+        f6:
+          key:
+            spread: 19.3357
+            stagger: 0.2543
+            splay: -1.507
+        f7:
+          key:
+            spread: 153.2482
+            stagger: -26.3872
+            splay: 19.496
+        f8:
+          key:
+            spread: 19.3357
+            stagger: 0.2543
+            splay: -1.507
+        f9:
+          key:
+            spread: 24.144
+            stagger: 0.3965
+            splay: -1.8818
+        f10:
+          key:
+            spread: 19.2977
+            stagger: 0.2533
+            splay: -1.504
+        f11:
+          key:
+            spread: 19.2811
+            stagger: 0.2528
+            splay: -1.5027
+        f12:
+          key:
+            spread: 19.2647
+            stagger: 0.2524
+            splay: -1.5014
+        del:
+          key:
+            spread: 23.75
+            stagger: 0.3837
+            splay: -1.8511
+    number:
+      anchor:
+        shift: [101.2808, -151.7141]
+        rotate: -0.7618
+      rows:
+        key:
+      columns:
+        grave:
+        n1:
+          key:
+            spread: 19.005
+            stagger: 0.2528
+            splay: -1.5242
+        n2:
+          key:
+            spread: 19.2722
+            stagger: 0.2599
+            splay: -1.5456
+        n3:
+          key:
+            spread: 19.2938
+            stagger: 0.2605
+            splay: -1.5474
+        n4:
+          key:
+            spread: 19.3165
+            stagger: 0.2612
+            splay: -1.5492
+        n5:
+          key:
+            spread: 19.3402
+            stagger: 0.2618
+            splay: -1.5511
+        n6:
+          key:
+            spread: 19.3651
+            stagger: 0.2625
+            splay: -1.553
+        n7:
+          key:
+            spread: 148.1393
+            stagger: -28.1717
+            splay: 20.4517
+        n8:
+          key:
+            spread: 19.3868
+            stagger: 0.263
+            splay: -1.5548
+        n9:
+          key:
+            spread: 19.3582
+            stagger: 0.2624
+            splay: -1.5526
+        n0:
+          key:
+            spread: 19.3309
+            stagger: 0.2616
+            splay: -1.5503
+        minus:
+          key:
+            spread: 19.3046
+            stagger: 0.2608
+            splay: -1.5482
+        equal:
+          key:
+            spread: 19.2795
+            stagger: 0.2601
+            splay: -1.5462
+        bspc:
+          key:
+            spread: 26.1311
+            stagger: 0.478
+            splay: -2.0959
+            width: 1.75u
+    qwerty:
+      anchor:
+        shift: [103.6558, -171.7525]
+        rotate: -0.9797
+      rows:
+        key:
+      columns:
+        tab:
+          key:
+            width: 1.25u
+        q:
+          key:
+            spread: 21.3838
+            stagger: 0.3292
+            splay: -1.7644
+        w:
+          key:
+            spread: 19.2814
+            stagger: 0.2677
+            splay: -1.591
+        e:
+          key:
+            spread: 19.3088
+            stagger: 0.2685
+            splay: -1.5931
+        r:
+          key:
+            spread: 19.3382
+            stagger: 0.2692
+            splay: -1.5956
+        t:
+          key:
+            spread: 19.3695
+            stagger: 0.2702
+            splay: -1.5982
+        y:
+          key:
+            spread: 151.4142
+            stagger: -36.2657
+            splay: 20.6478
+        u:
+          key:
+            spread: 19.3858
+            stagger: 0.2706
+            splay: -1.5995
+        i:
+          key:
+            spread: 19.358
+            stagger: 0.2699
+            splay: -1.5972
+        o:
+          key:
+            spread: 19.3323
+            stagger: 0.2691
+            splay: -1.5951
+        p:
+          key:
+            spread: 19.3087
+            stagger: 0.2684
+            splay: -1.5932
+        lbkt:
+          key:
+            spread: 19.2869
+            stagger: 0.2679
+            splay: -1.5914
+        rbkt:
+          key:
+            spread: 19.2669
+            stagger: 0.2673
+            splay: -1.5897
+        bslh:
+          key:
+            spread: 21.3762
+            stagger: 0.329
+            splay: -1.7638
+            width: 1.25u
+    home:
+      anchor:
+        shift: [106.0308, -191.8015]
+        rotate: -1.2106
+      rows:
+        key:
+      columns:
+        caps:
+          key:
+            width: 1.5u
+        a:
+          key:
+            spread: 23.7641
+            stagger: 0.4188
+            splay: -2.019
+        s:
+          key:
+            spread: 19.2927
+            stagger: 0.2759
+            splay: -1.6391
+        d:
+          key:
+            spread: 19.3265
+            stagger: 0.277
+            splay: -1.6419
+        f:
+          key:
+            spread: 19.3634
+            stagger: 0.278
+            splay: -1.6451
+        g:
+          key:
+            spread: 19.4032
+            stagger: 0.2792
+            splay: -1.6484
+        enc1:
+          key:
+            spread: 71.125
+            stagger: -25.5834
+            splay: 9.8041
+            width: 18
+            height: 18
+            encoder: true
+        h:
+          key:
+            spread: 92.011
+            stagger: 5.3536
+            splay: 11.0448
+        j:
+          key:
+            spread: 19.4208
+            stagger: 0.2796
+            splay: -1.6499
+        k:
+          key:
+            spread: 19.3819
+            stagger: 0.2785
+            splay: -1.6466
+        l:
+          key:
+            spread: 19.3462
+            stagger: 0.2775
+            splay: -1.6436
+        semi:
+          key:
+            spread: 19.3134
+            stagger: 0.2766
+            splay: -1.6409
+        sqt:
+          key:
+            spread: 19.2835
+            stagger: 0.2757
+            splay: -1.6382
+        ret:
+          key:
+            spread: 26.1318
+            stagger: 0.5064
+            splay: -2.2204
+            width: 1.75u
+    bottom:
+      anchor:
+        shift: [108.4058, -211.8622]
+        rotate: -1.4555
+      rows:
+        key:
+      columns:
+        lshft:
+          key:
+            width: 1.75u
+        z:
+          key:
+            spread: 26.1467
+            stagger: 0.5225
+            splay: -2.2895
+        x:
+          key:
+            spread: 19.3063
+            stagger: 0.2848
+            splay: -1.6904
+        c:
+          key:
+            spread: 19.3474
+            stagger: 0.286
+            splay: -1.6939
+        v:
+          key:
+            spread: 19.3926
+            stagger: 0.2873
+            splay: -1.6979
+        b:
+          key:
+            spread: 19.442
+            stagger: 0.2888
+            splay: -1.7022
+        enc2:
+          key:
+            spread: 95.375
+            stagger: -4.4129
+            splay: 10.5294
+            width: 18
+            height: 18
+            encoder: true
+        vault:
+          key:
+            spread: 49.7346
+            stagger: -10.2687
+            splay: 12.2364
+        n:
+          key:
+            spread: 19.4961
+            stagger: 0.2905
+            splay: -1.707
+        m:
+          key:
+            spread: 19.442
+            stagger: 0.2888
+            splay: -1.7022
+        comma:
+          key:
+            spread: 19.3926
+            stagger: 0.2873
+            splay: -1.6979
+        dot:
+          key:
+            spread: 19.3474
+            stagger: 0.286
+            splay: -1.6939
+        fslh:
+          key:
+            spread: 19.3063
+            stagger: 0.2849
+            splay: -1.6904
+        rshft:
+          key:
+            spread: 26.1467
+            stagger: 0.5224
+            splay: -2.2895
+            width: 1.75u
+        up:
+          key:
+            spread: 26.1202
+            stagger: 0.5215
+            splay: -2.2872
+    modifier:
+      anchor:
+        shift: [115.5308, -232.2833]
+        rotate: -2.1458
+      rows:
+        key:
+      columns:
+        lctrl:
+          key:
+            width: 1.25u
+        lalt:
+          key:
+            spread: 23.7834
+            stagger: 0.4461
+            splay: -2.1488
+            width: 1.25u
+        lgui:
+          key:
+            spread: 24.1589
+            stagger: 0.4603
+            splay: -2.1827
+            width: 1.25u
+        lspace_out:
+          key:
+            spread: 38.8081
+            stagger: 1.1883
+            splay: -3.5076
+            width: 1.75u
+        lspace_in:
+          key:
+            spread: 29.2736
+            stagger: 0.6758
+            splay: -2.6451
+            width: 1.25u
+        rspace_in:
+          key:
+            spread: 116.3589
+            stagger: -29.2313
+            splay: 25.9205
+            width: 1.25u
+        rspace_out:
+          key:
+            spread: 29.3428
+            stagger: 0.679
+            splay: -2.6514
+            width: 1.75u
+        rgui:
+          key:
+            spread: 38.8744
+            stagger: 1.1924
+            splay: -3.5137
+            width: 1.25u
+        ralt:
+          key:
+            spread: 24.1862
+            stagger: 0.4613
+            splay: -2.1852
+            width: 1.25u
+        rctrl:
+          key:
+            spread: 23.7999
+            stagger: 0.4466
+            splay: -2.1502
+            width: 1.25u
+        left:
+          key:
+            spread: 21.3828
+            stagger: 0.3606
+            splay: -1.9319
+        down:
+          key:
+            spread: 18.9979
+            stagger: 0.2845
+            splay: -1.7162
+        right:
+          key:
+            spread: 19.0064
+            stagger: 0.2848
+            splay: -1.7171
