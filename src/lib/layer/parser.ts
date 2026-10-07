@@ -12,35 +12,55 @@ export function parseLayer(text: string): Layer {
   const rawBindings = text.slice(bindingsStart + 'bindings:'.length, bindingsEnd);
   const tokens = rawBindings.trim().split(/\s+/).filter(Boolean);
 
-  const bindings: Binding[] = [];
-  let i = 0;
-  while (i < tokens.length) {
-    const type = tokens[i++];
-    if (type === '&trans') {
-      bindings.push({ tap: '', trans: true });
-    } else if (type === '&bt') {
-      const param = tokens[i++];
-      bindings.push({ tap: param === 'BT_CLR' ? 'CLR' : param, bt: true });
-    } else if (type === '&os_sel') {
-      bindings.push({ tap: tokens[i++], os: true });
-    } else if (type === '&ok') {
-      bindings.push({ tap: tokens[i++], command: true });
-    } else if (type === '&kp') {
-      bindings.push({ tap: display(tokens[i++]) });
-    } else if (type === '&lt') {
-      const hold = tokens[i++];
-      const tap = tokens[i++];
-      bindings.push({ tap: display(tap), hold, holdType: 'layer' });
-    } else if (type === '&ht') {
-      const hold = tokens[i++];
-      const tap = tokens[i++];
-      bindings.push({ tap: display(tap), hold, holdType: 'modifier' });
-    }
+  const groups: string[][] = [];
+  for (const token of tokens) {
+    if (token.startsWith('&') || groups.length === 0) groups.push([token]);
+    else groups[groups.length - 1].push(token);
   }
+  const bindings = groups.map(([type, ...params]) => parseBinding(type, params));
 
   const combos = combosStart !== -1 ? parseCombos(text.slice(combosStart + 1)) : [];
 
   return { name, bindings, combos };
+}
+
+const OUTPUTS: Record<string, string> = { OUT_USB: 'USB', OUT_BLE: 'BLE', OUT_TOG: 'USB/BLE' };
+
+// ZMK needs the suffix when a layer shares a keycode's name (e.g. SPACE).
+const layerName = (macro: string) => macro.replace(/_LAYER$/, '');
+
+function parseBinding(type: string, params: string[]): Binding {
+  switch (type) {
+    case '&trans':
+      return { tap: '', trans: true };
+    case '&none':
+      return { tap: '' };
+    case '&bt': {
+      const [action, channel] = params;
+      if (action === 'BT_SEL') return { tap: channel, bt: true };
+      return { tap: action === 'BT_CLR' ? 'CLR' : action, bt: true };
+    }
+    case '&os_sel':
+      return { tap: params[0], os: true };
+    case '&ok':
+      return { tap: params[0], command: true };
+    case '&kp':
+      return { tap: display(params[0]) };
+    case '&lt':
+      return { tap: display(params[1]), hold: layerName(params[0]), holdType: 'layer' };
+    case '&mo':
+      return { tap: '', hold: layerName(params[0]), holdType: 'layer' };
+    case '&ht':
+      return { tap: display(params[1]), hold: params[0], holdType: 'modifier' };
+    case '&out':
+      return { tap: OUTPUTS[params[0]] ?? params[0], command: true };
+    case '&sys_reset':
+      return { tap: 'Reset', command: true };
+    case '&bootloader':
+      return { tap: 'Boot_loader', command: true };
+    default:
+      return { tap: [type.slice(1), ...params].join('_'), command: true };
+  }
 }
 
 function parseCombos(text: string): Combo[] {
@@ -60,7 +80,7 @@ function parseCombos(text: string): Combo[] {
       .trim().split(/\s+/).filter(Boolean).map(Number);
     const bindingTokens = (currentProps['bindings'] ?? '').trim().split(/\s+/).filter(Boolean);
     const activatesLayer =
-      bindingTokens[0] === '&sl' && bindingTokens[1] ? bindingTokens[1] : undefined;
+      bindingTokens[0] === '&sl' && bindingTokens[1] ? layerName(bindingTokens[1]) : undefined;
     const oneshotMod = bindingTokens[0] === '&skq' ? true : undefined;
     combos.push({ name: currentName, description, keyPositions, activatesLayer, oneshotMod });
   };

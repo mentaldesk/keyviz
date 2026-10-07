@@ -132,11 +132,22 @@
 				y={-(key.h / 2) + gap / 2}
 				width={key.w - gap}
 				height={key.h - gap}
-				rx="2"
+				rx={key.encoder ? (key.w - gap) / 2 : 2}
 				stroke-width="0.5"
 				fill={keyFill(key, binding)}
 				stroke={keyStroke(key, binding)}
 			/>
+			{#if key.label}
+				<text
+					x="0"
+					y={key.h / 2 + key.h * 0.2}
+					text-anchor="middle"
+					dominant-baseline="central"
+					font-size={key.h * 0.25}
+					fill="white"
+					font-family="system-ui, sans-serif"
+				>{key.label}</text>
+			{/if}
 			{#if showLegend}
 				{#if binding!.command}
 					{@const words = binding!.tap.split('_')}
@@ -192,16 +203,19 @@
 						>🐧</text>
 					{/if}
 				{:else}
+					{@const legend = !binding!.tap && key.legend}
+					{@const tap = legend || binding!.tap}
+					{@const tapSize = Math.min(key.h * (legend ? 0.55 : 0.35), (key.w - gap - 2) / (0.75 * [...tap].length))}
 					<text
 						x="0"
 						y={tapY}
 						text-anchor="middle"
 						dominant-baseline="central"
-						font-size={key.h * 0.35}
+						font-size={tapSize}
 						fill="var(--color-legend-tap)"
 						font-family="system-ui, sans-serif"
 					>
-						{binding!.tap}
+						{tap}
 					</text>
 					{#if binding!.hold}
 						<text

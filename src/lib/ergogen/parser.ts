@@ -135,7 +135,10 @@ export function parseErgogenConfig(config: ErgogenConfig): KeyPosition[] {
 					h,
 					zone: zoneName,
 					col: colName,
-					row: rowName
+					row: rowName,
+					encoder: merged.encoder,
+					label: merged.label,
+					legend: merged.legend
 				};
 
 				keysByName.set(key.name, key);

@@ -26,7 +26,7 @@ const ZMK_DISPLAY: Record<string, string> = {
   PRCNT: '%',   PERCENT: '%',
   CARET: '^',   CRRT: '^',
   AMPS: '&',    AMPERSAND: '&',
-  ASTRK: '*',   ASTERISK: '*',
+  ASTRK: '*',   ASTERISK: '*',  STAR: '*',
   LPAR: '(',    LEFT_PARENTHESIS: '(',
   RPAR: ')',    RIGHT_PARENTHESIS: ')',
   LBRC: '{',    LEFT_BRACE: '{',
@@ -41,7 +41,7 @@ const ZMK_DISPLAY: Record<string, string> = {
   // Navigation / editing
   BSPC: '⌫',
   DEL: '⌦',
-  RET: '↵',
+  RET: '↵',     ENTER: '↵',
   ESC: '⎋',
   TAB: '⇥',
   SPACE: 'SPC',
@@ -49,10 +49,28 @@ const ZMK_DISPLAY: Record<string, string> = {
   DOWN: '↓',
   LEFT: '←',
   RIGHT: '→',
+  HOME: 'Home',
+  END: 'End',
+  PG_UP: 'PgUp',
+  PG_DN: 'PgDn',
+  PSCRN: 'PrtSc',
+  CAPS: '⇪',
+
+  // Modifiers
+  LSHFT: '⇧',   RSHFT: '⇧',
+  LCTRL: '⌃',   RCTRL: '⌃',
+  LALT: '⌥',    RALT: '⌥',
+  LGUI: '⌘',    RGUI: '⌘',
+
+  // Media / consumer
+  C_MUTE: '🔇',
+  C_PP: '⏯',
+  C_BRI_UP: '🔆',
+  C_BRI_DN: '🔅',
 };
 
 export function display(zmk: string): string {
-  return ZMK_DISPLAY[zmk] ?? zmk;
+  return ZMK_DISPLAY[zmk] ?? zmk.match(/^N(\d)$/)?.[1] ?? zmk;
 }
 
 export function getBindingOrder(

@@ -57,7 +57,7 @@
 				y={-(key.h / 2) + gap / 2}
 				width={key.w - gap}
 				height={key.h - gap}
-				rx="2"
+				rx={key.encoder ? (key.w - gap) / 2 : 2}
 				stroke-width="0.3"
 				fill={highlighted.has(key.name) ? 'var(--color-key-held)' : '#d1d5db'}
 				stroke={highlighted.has(key.name) ? 'var(--color-key-held)' : '#9ca3af'}
